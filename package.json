@@ -1,0 +1,27 @@
+{
+  "name": "deloitte-ai",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch:js": "./node_modules/.bin/esbuild ./js/app.js --bundle --outfile=./js/app.prod.js --watch",
+    "watch:css": "watch postcss css/tailwind.css -o css/tailwind.prod.css -w",
+    "watch": "cross-env NODE_ENV=development concurrently \"npm run watch:css\" \"npm run watch:js\"",
+    "prod": "NODE_ENV=production TAILWIND_MODE=build postcss css/tailwind.css -o css/tailwind.prod.css"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.4.0",
+    "concurrently": "^6.2.1",
+    "cross-env": "^6.0.3",
+    "esbuild": "^0.12.24",
+    "postcss": "^8.3.11",
+    "tailwindcss": "^2.2.19"
+  },
+  "dependencies": {
+    "@tailwindcss/forms": "^0.3.4",
+    "postcss-cli": "^10.0.0",
+    "tw-elements": "^1.0.0-alpha12"
+  }
+}
