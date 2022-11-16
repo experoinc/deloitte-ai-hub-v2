@@ -4393,6 +4393,11 @@ textarea.form-control.is-invalid{
 .filter{
 	filter: var(--tw-filter);
 }
+.transition-colors{
+	transition-property: background-color, border-color, color, fill, stroke;
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	transition-duration: 150ms;
+}
 .vertical-header-gradient {
       background: rgb(255, 255, 255);
       background: linear-gradient(
@@ -4735,6 +4740,11 @@ button.car-btn-right i {
 .hover\:bg-primary:hover{
 	--tw-bg-opacity: 1;
 	background-color: rgba(134, 188, 37, var(--tw-bg-opacity));
+}
+
+.hover\:bg-gray-300:hover{
+	--tw-bg-opacity: 1;
+	background-color: rgba(209, 213, 219, var(--tw-bg-opacity));
 }
 
 .hover\:drop-shadow-xl:hover{

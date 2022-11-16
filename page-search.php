@@ -1,7 +1,7 @@
 <?php
 get_header(); ?>
 
-<div style="min-height: calc(100vh - 78px);" class="page-search flex flex-col container mx-auto bg-white font-roboto content-padding pt-10 pb-20">
+<div style="min-height: calc(100vh - 78px);" class="page-search flex flex-col gm-container bg-white font-roboto pt-10 pb-20">
   <div class="flex flex-col lg:flex-row items-center lg:items-start">
     <div class="flex flex-col">
       <div class="border-gray border flex flex-none self-start flex-col w-[333px] mb-5 p-3 rounded-md">
@@ -78,12 +78,8 @@ get_header(); ?>
         <span>No Results</span>
       </div>
 
-      <button id="more_posts" class="hidden order-2 ml-6 mr-4 bg-transparent text-gray-600 py-2 px-4 justify-between items-center flex bg-gray-300">
-        <span class="mr-2">Show More</span>
-        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M1.59249 0.320696C1.16783 0.0527657 0.601609 0.0527663 0.318499 0.454662C-0.106167 0.856557 -0.106167 1.52638 0.318499 1.79431L4.28204 5.6793L4.4236 5.81327C4.84826 6.0812 5.41448 6.0812 5.69759 5.6793L9.66113 1.79431L9.80269 1.66035C10.0858 1.25845 10.0858 0.722591 9.66113 0.320696L9.51958 0.186731C9.09491 -0.081199 8.52869 -0.0811998 8.24558 0.320696L4.98981 3.53586L1.59249 0.320696Z" fill="#787878" />
-        </svg>
-
+      <button id="more_posts" class="hidden order-2 ml-6 mr-4 bg-transparent text-gray-600 py-2 px-4 justify-between items-center text-center flex-col hover:bg-gray-100 transition-colors cursor-pointer mt-10">
+        <span class="mr-2">Show More <i class="fa fa-arrow-down"></i></span>
       </button>
     </div>
   </div>
