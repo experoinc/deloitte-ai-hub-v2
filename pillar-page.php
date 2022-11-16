@@ -109,12 +109,12 @@ $topPosts = get_posts($postsArgs);
                 echo $r;
             } ?>
         </ul>
-        <button type="button" class="car-btn-right z-[1000]"><i class="fa fa-chevron-circle-right"></i></button>
+        <?php if (count($topPosts) > 3) echo '<button type="button" class="car-btn-right z-[1000]"><i class="fa fa-chevron-circle-right"></i></button>' ?>
     </div>
 </section>
 <div class="page-search flex flex-col mx-auto bg-white font-roboto pt-10 pb-20 gm-container">
-    <h2 class="text-2xl capitalize">Browse resources for <?php echo $pagename ?></h2>
-    <ul class="nav nav-tabs flex flex-col md:flex-row flex-wrap list-none border-b-0 pl-0 mb-4" id="tabs-tab" role="tablist">
+    <h2 class="text-2xl capitalize mb-5">Browse resources for <?php echo $pagename ?></h2>
+    <ul class="nav nav-tabs flex flex-col md:flex-row flex-wrap list-none border-b-0 pl-0" id="tabs-tab" role="tablist">
         <li class="nav-item" role="presentation">
             <a cat-id="-1" href="#tabs-all" class="
                 nav-link
@@ -157,7 +157,7 @@ $topPosts = get_posts($postsArgs);
 
     <?php echo '<div class="tab-content" id="tabs-tabContent">
   <div class="tab-pane fade show active" id="tabs-' . $pagename . '" role="tabpanel" aria-labelledby="tabs-' . $pagename . '-tab">
-  <ul id="ajax-posts" class="wp-block-post-template font-sans space-between">
+  <ul id="ajax-posts" class="wp-block-post-template font-sans space-between !mt-0">
       </ul>
   </div>' ?>
 </div>

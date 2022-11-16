@@ -86,7 +86,8 @@ module.exports = {
       "ellipsis",
       "overflow",
       "hidden",
-      "mr"
+      "mr",
+      "my-24"
     ],
   },
   theme: {

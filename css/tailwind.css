@@ -145,13 +145,12 @@
 
 .wp-block-post-excerpt__excerpt {
   @apply text-xs;
-  @apply mb-4;
 }
 
 .wp-block-post-terms {
   @apply text-xs;
   @apply text-primary;
-  @apply mb-4;
+  @apply overflow-hidden overflow-ellipsis whitespace-nowrap mb-0;
 }
 
 .wp-block-query {
@@ -207,10 +206,6 @@ span.tag {
   padding: 4px 7px;
 }
 
-.post-tags-container {
-  margin-bottom: 10px;
-}
-
 .carousel-hidden {
   display: none !important;
 }
@@ -218,4 +213,13 @@ span.tag {
 button.car-btn-right i {
   font-size: 40px;
   margin-left: -115px;
+}
+
+.nav-tabs .nav-link.active {
+  color: #53565A;
+  border-color: #53565A;
+}
+
+.nav-tabs .nav-link {
+  color: #4b55639c;
 }

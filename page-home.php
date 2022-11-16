@@ -77,24 +77,25 @@ function getHeroTexts($id)
     <div class="px-6">
         <h2 class="text-4xl mb-8">Stay up to date</h2>
         <p class="mb-4">Find the latest announcements and hightlights here.</p>
-        <div class="carousel-announcements">
-            <div class="flex flex-col border h-[292px] w-80 min-w-[370px] p-4 border-gray-400 rounded-md">
-                <h4>What's AI?</h4>
-                <p>Looking for some extra guidance on what exactly AI is and what it looks like at Deloitte?<br>Foillow the link below to access some AI SGO KX resource and kickstart your AI journey.</p>
+        <div class="carousel-announcements mt-10">
+            <div class="flex flex-col border h-[330px] w-80 min-w-[370px] p-6 border-gray-400 rounded-md items-start">
+                <h4 class="text-3xl font-semibold mb-4">What's AI?</h4>
+                <p class="text-base">Looking for some extra guidance on what exactly AI is and what it looks like at Deloitte?<br>Foillow the link below to access some AI SGO KX resource and kickstart your AI journey.</p>
+                <button class="mt-5 border-[#56D23B] border rounded-md p-3 text-[#56D23B] uppercase text-sm py-2">Learn about AI</button>
             </div>
         </div>
     </div>
 </div>
-<div class="gm-container my-14">
+<div class="gm-container my-24">
     <h2 class="text-4xl font-light w-1/2">Your one-stop-shop for growing your career in AI.</h2>
     <article class="max-w-lg text-base">The AI hub grew from practitioner requests for a better way to find AI resources around the firm. In March 2022, we launched a microsite designed to help practitioners navigate to the resources they need. wherever they are in their AI journey.<br><br>Reach out to us at <a class="italic text-blue-600" href="mailto:mygpsaihub@deloitte.com">MyGPSAIHub@deloitte.com</a> if you'd like to see your resource added to the Hub or have general questions about navigating the AI landscape at Deloitte!<br><br>For questions regarding the individual items included on the site, please reach out to the relevant resource owners.</article>
 </div>
 <div class="flex bg-gray-600 text-white">
-    <div class="gm-container my-20">
+    <div class="gm-container my-24">
         <h2 class="text-4xl font-light w-1/2 min-w-[687px]">New to AI? Start here.</h2>
         <div class="max-w-lg">
             <article class="text-base">if you need some extra guidance on what exactly AI is and what it looks like at Deloitte, follow the link below to access some AI SGO KX resources and kickstart your AI journey.</article>
-            <button class="uppercase bg-[#43B02A] rounded-md text-white px-4 py-2 mt-3 transform hover:bg-[#56d23b]">learn about ai</button>
+            <button class="mt-5 uppercase bg-[#43B02A] rounded-md text-white px-4 py-2 transform hover:bg-[#56d23b]">learn about ai</button>
         </div>
     </div>
 </div>
