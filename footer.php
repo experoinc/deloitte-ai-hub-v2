@@ -3,7 +3,7 @@
 
 <footer id="colophon" class="site-footer bg-black" role="contentinfo">
   <div class="gm-container py-20 mx-auto flex flex-col">
-    <div class="flex flex-col lg:flex-row pb-10 border-gray-400 border-b mb-10">
+    <!-- <div class="flex flex-col lg:flex-row pb-10 border-gray-400 border-b mb-10">
       <div class="flex-1 flex items-center">
         <h2 class="mr-0 lg:mr-10 mb-4 lg:mb-0 font-2xl text-white text-4xl font-bold">Tell us what you think.</h2>
         <svg class="hidden lg:block" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -17,7 +17,7 @@
           Take Survey
         </button>
       </div>
-    </div>
+    </div> -->
 
     <div class="flex">
       <div class="flex flex-2 w-1/3 flex-col">

@@ -5451,7 +5451,6 @@
       });
     });
     function loadCategories() {
-      console.log("loading categories");
       var str = "&pageNumber=" + 1 + "&per_page=" + 100;
       return $.ajax({
         type: "GET",
@@ -5459,10 +5458,8 @@
         url: getUrl(ajax_args.categoriesUrl),
         data: str,
         success: function(data) {
-          console.log("categories", data, (0, import_lodash.groupBy)(data, "parent"));
         },
         error: function(jqXHR, textStatus, errorThrown) {
-          console.log("get categories error", errorThrown, textStatus, jqXHR);
         }
       });
     }
@@ -5474,10 +5471,8 @@
         url: getUrl(ajax_args.tagsUrl),
         data: str,
         success: function(data) {
-          console.log("tags", data);
         },
         error: function(jqXHR, textStatus, errorThrown) {
-          console.log("get tags error", errorThrown, textStatus, jqXHR);
         }
       });
     }
@@ -5497,7 +5492,6 @@
       const orderby = aToZ ? "title" : "date";
       const categoryIds = selectedFilters.filter((id) => filtersById[id].taxonomy === "category");
       const tagsIds = selectedFilters.filter((id) => filtersById[id].taxonomy === "post_tag");
-      console.log("categoryIds", categoryIds, tagsIds);
       var str = "&pageNumber=" + pageNumber2 + "&per_page=" + ppp + "&order=asc&orderby=" + orderby + "&offset=" + (offset === 0 ? offset : posts.length) + (catIds || categoryIds.length ? `&categories=${(catIds || categoryIds).join(",")}` : "") + (tagsIds.length ? `&tags=${tagsIds.join(",")}` : "") + "&tax_relation=OR" + (searchText ? "&search=" + searchText : "");
       $("#more_posts").toggleClass("hidden", true);
       $("#more_posts").attr("disabled", true);
@@ -5687,7 +5681,6 @@
         $(params.currentTarget).toggleClass("rotate");
       });
       if (term) {
-        console.log(`there's a term ${term}`);
         debounceSearch(term);
       } else {
         load_posts(pageNumber++);
@@ -12290,6 +12283,8 @@
     const { renderPosts, load_posts } = await searchPage2(null, "", false);
     const $ = jQuery;
     let currCategory = -1;
+    const topCount = $("section.pillar-top li").get().length;
+    const carIndex = 2;
     const $pillarCategoriesIds = $("a[cat-id]").get().map((e, i) => {
       if (i === 0)
         currCategory = $(e).attr("cat-id");
@@ -12297,11 +12292,9 @@
     });
     async function loadTabContent(first = false) {
       const ids = currCategory === "-1" ? $pillarCategoriesIds.slice(1) : [currCategory];
-      console.log(ids);
       const posts = await load_posts(1, ids, 0);
       $("ul#ajax-posts").html(renderPosts(posts));
       if (hash) {
-        console.log("clicking", hash);
         (0, import_lodash2.defer)(() => {
           $(document).ready(() => {
             $(`#${hash}`).click();
@@ -12314,11 +12307,25 @@
       }
     }
     $("a[cat-id]").on("click", function(e) {
-      console.log("assigning, ", $(this).attr("cat-id"));
       currCategory = $(this).attr("cat-id");
       loadTabContent();
     });
+    function enableCarousel() {
+      console.log(topCount);
+      $("section.pillar-top li").each(function(i) {
+        $(this).attr("car-index", i);
+        if (i > 2)
+          $(this).addClass("carousel-hidden");
+      });
+      $("button.car-btn-right").on("click", function() {
+        $("section.pillar-top li").each(function(i) {
+          if (i < carIndex + 3)
+            $(this).toggleClass("carousel-hidden");
+        });
+      });
+    }
     loadTabContent(true);
+    enableCarousel();
   }
 
   // js/app.js

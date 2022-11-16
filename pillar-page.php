@@ -7,6 +7,23 @@ Template Name: PillarTemplate
 get_header(); ?>
 
 <?php
+function cats($cats)
+{
+    $payload = array();
+    foreach ($cats as $cat) {
+        // echo var_dump($cat);
+        $payload[] = $cat;
+    }
+    return $payload;
+}
+function tags($tags)
+{
+    $payload = array();
+    foreach ($tags as $tag) {
+        $payload[] = '<span class="tag text-xs border mr-1">' . $tag->name . '</span>';
+    }
+    return $payload;
+}
 function getHeroTexts($id)
 {
     // 21 = learn 
@@ -52,7 +69,13 @@ $subCategories = get_categories(array(
     'order'   => 'ASC',
     'hide_empty' => false,
     'term_taxonomy_id' => $subCategoriesIds
-)); ?>
+));
+$postsKey = array_filter($subCategories, function ($c) {
+    return str_contains($c->slug, "key-resource");
+});
+$postsArgs = array('category' => array_shift(array_values($postsKey))->term_id);
+$topPosts = get_posts($postsArgs);
+?>
 <?php echo '<div class="relative overflow-hidden bg-no-repeat bg-cover" style="
     background-position: 50%;
     background-image: url(' . $heroData->hero . ');
@@ -61,13 +84,35 @@ $subCategories = get_categories(array(
 <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed" style="background-color: rgba(0, 0, 0, 0.75)">
     <div class="gm-container flex items-center h-full">
         <div class="text-white md:px-12 !pl-0">
-            <h1 class="text-5xl font-bold mt-0 mb-6"><?php echo $heroData->title ?></h1>
-            <h3 class="text-3xl font-bold mb-8"><?php echo $heroData->desc ?></h3>
+            <h1 class="text-5xl font-medium mt-0 mb-6"><?php echo $heroData->title ?></h1>
+            <h3 class="text-3xl font-light mb-8"><?php echo $heroData->desc ?></h3>
         </div>
     </div>
 </div>
 </div>
-<div class="page-search flex flex-col container mx-auto bg-white font-roboto pt-10 pb-20 gm-container">
+<section class="pillar-top">
+    <?php if (count($topPosts) > 0) echo '<h2 class="text-2xl capitalize gm-container mt-12 mb-5">Key resources to get you started</h2><hr class="gm-container">' ?>
+    <div class="pillar-post-container gm-container mb-5">
+        <ul class="wp-block-post-template font-sans space-between">
+            <?php foreach ($topPosts as $top) {
+                $meta = get_post_meta($top->ID);
+                $tags = wp_get_post_tags($top->ID);
+                $cats = wp_get_post_categories($top->ID, array('fields' => 'names'));
+                $r = '<li class="wp-block-post-template min-w-[300px] search-item shadow-none flex-nowrap overflow-hidden overflow-ellipsis"><div class="post-tags-container">
+                ' . implode("", tags($tags)) . '</div>
+                <h2 class="text-lg font-semibold wp-block-post-title">
+                  <a href="' . $meta['_links_to'][0] . '">' . $top->post_title . '</a>
+                </h2>
+                <div class="wp-block-post-terms">' . implode(',', cats($cats)) . '</div>
+                <div class="wp-block-post-excerpt__excerpt overflow-hidden whitespace-nowrap overflow-ellipsis !mb-0">' . $top->post_excerpt . '</div>
+              </li>';
+                echo $r;
+            } ?>
+        </ul>
+        <button type="button" class="car-btn-right z-[1000]"><i class="fa fa-chevron-circle-right"></i></button>
+    </div>
+</section>
+<div class="page-search flex flex-col mx-auto bg-white font-roboto pt-10 pb-20 gm-container">
     <h2 class="text-2xl capitalize">Browse resources for <?php echo $pagename ?></h2>
     <ul class="nav nav-tabs flex flex-col md:flex-row flex-wrap list-none border-b-0 pl-0 mb-4" id="tabs-tab" role="tablist">
         <li class="nav-item" role="presentation">
@@ -88,6 +133,7 @@ $subCategories = get_categories(array(
         </li>
         <?php
         foreach ($subCategories as $key => $categoryTerm) {
+            if (str_contains($categoryTerm->slug, "key-resource")) continue;
             $currTab = '<li class="nav-item" role="presentation"><a cat-id="' . $categoryTerm->cat_ID . '" href="#tabs-' . str_replace(" ", "", $categoryTerm->cat_name) . '" class="
             nav-link
             block

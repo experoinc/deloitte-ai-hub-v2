@@ -8,6 +8,9 @@ export default async function pillarPage(page, searchPage) {
   const { renderPosts, load_posts } = await searchPage(null, "", false);
   const $ = jQuery;
   let currCategory = -1;
+  const topCount = $("section.pillar-top li").get().length;
+  const carIndex = 2;
+
   const $pillarCategoriesIds = $("a[cat-id]")
     .get()
     .map((e, i) => {
@@ -18,11 +21,9 @@ export default async function pillarPage(page, searchPage) {
   async function loadTabContent(first = false) {
     const ids =
       currCategory === "-1" ? $pillarCategoriesIds.slice(1) : [currCategory];
-    console.log(ids);
     const posts = await load_posts(1, ids, 0);
     $("ul#ajax-posts").html(renderPosts(posts));
     if (hash) {
-      console.log("clicking", hash);
       defer(() => {
         $(document).ready(() => {
           $(`#${hash}`).click();
@@ -36,9 +37,23 @@ export default async function pillarPage(page, searchPage) {
   }
 
   $("a[cat-id]").on("click", function (e) {
-    console.log("assigning, ", $(this).attr("cat-id"));
     currCategory = $(this).attr("cat-id");
     loadTabContent();
   });
+
+  function enableCarousel() {
+    console.log(topCount);
+    $("section.pillar-top li").each(function (i) {
+      $(this).attr("car-index", i);
+      if (i > 2) $(this).addClass("carousel-hidden");
+    });
+    $("button.car-btn-right").on("click", function () {
+      $("section.pillar-top li").each(function (i) {
+        if (i < carIndex + 3) $(this).toggleClass("carousel-hidden");
+      });
+    });
+  }
+
   loadTabContent(true);
+  enableCarousel();
 }

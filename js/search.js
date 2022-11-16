@@ -20,7 +20,7 @@ export default async function searchPage(onPostClick, term, doInit = true) {
   });
 
   function loadCategories() {
-    console.log("loading categories");
+    // console.log("loading categories");
     // load all categories
     var str = "&pageNumber=" + 1 + "&per_page=" + 100;
     return $.ajax({
@@ -29,10 +29,10 @@ export default async function searchPage(onPostClick, term, doInit = true) {
       url: getUrl(ajax_args.categoriesUrl),
       data: str,
       success: function (data) {
-        console.log("categories", data, groupBy(data, "parent"));
+        // console.log("categories", data, groupBy(data, "parent"));
       },
       error: function (jqXHR, textStatus, errorThrown) {
-        console.log("get categories error", errorThrown, textStatus, jqXHR);
+        // console.log("get categories error", errorThrown, textStatus, jqXHR);
       },
     });
   }
@@ -46,10 +46,10 @@ export default async function searchPage(onPostClick, term, doInit = true) {
       url: getUrl(ajax_args.tagsUrl),
       data: str,
       success: function (data) {
-        console.log("tags", data);
+        // console.log("tags", data);
       },
       error: function (jqXHR, textStatus, errorThrown) {
-        console.log("get tags error", errorThrown, textStatus, jqXHR);
+        // console.log("get tags error", errorThrown, textStatus, jqXHR);
       },
     });
   }
@@ -77,7 +77,7 @@ export default async function searchPage(onPostClick, term, doInit = true) {
       (id) => filtersById[id].taxonomy === "post_tag"
     );
 
-    console.log("categoryIds", categoryIds, tagsIds);
+    // console.log("categoryIds", categoryIds, tagsIds);
     // const orderBy =
     var str =
       "&pageNumber=" +
@@ -359,7 +359,7 @@ export default async function searchPage(onPostClick, term, doInit = true) {
     });
 
     if (term) {
-      console.log(`there's a term ${term}`);
+      // console.log(`there's a term ${term}`);
       debounceSearch(term);
     } else {
       load_posts(pageNumber++);

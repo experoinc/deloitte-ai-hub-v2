@@ -80,7 +80,13 @@ module.exports = {
       "mb",
       "ml",
       "ml-[25px]",
-      "bg"
+      "bg",
+      "px",
+      "px-[20px]",
+      "ellipsis",
+      "overflow",
+      "hidden",
+      "mr"
     ],
   },
   theme: {

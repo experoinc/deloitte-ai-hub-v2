@@ -210,3 +210,12 @@ span.tag {
 .post-tags-container {
   margin-bottom: 10px;
 }
+
+.carousel-hidden {
+  display: none !important;
+}
+
+button.car-btn-right i {
+  font-size: 40px;
+  margin-left: -115px;
+}

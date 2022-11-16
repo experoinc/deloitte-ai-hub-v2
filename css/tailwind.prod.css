@@ -3826,6 +3826,9 @@ textarea.form-control.is-invalid{
 .z-10{
 	z-index: 10;
 }
+.z-\[1000\]{
+	z-index: 1000;
+}
 .order-2{
 	order: 2;
 }
@@ -3905,6 +3908,15 @@ textarea.form-control.is-invalid{
 }
 .mr-4{
 	margin-right: 1rem;
+}
+.mr-1{
+	margin-right: 0.25rem;
+}
+.mt-12{
+	margin-top: 3rem;
+}
+.\!mb-0{
+	margin-bottom: 0px !important;
 }
 .mt-28{
 	margin-top: 7rem;
@@ -4038,6 +4050,9 @@ textarea.form-control.is-invalid{
 .flex-wrap{
 	flex-wrap: wrap;
 }
+.flex-nowrap{
+	flex-wrap: nowrap;
+}
 .items-start{
 	align-items: flex-start;
 }
@@ -4078,6 +4093,12 @@ textarea.form-control.is-invalid{
 }
 .overflow-hidden{
 	overflow: hidden;
+}
+.overflow-ellipsis{
+	text-overflow: ellipsis;
+}
+.whitespace-nowrap{
+	white-space: nowrap;
 }
 .rounded{
 	border-radius: 0.25rem;
@@ -4161,6 +4182,10 @@ textarea.form-control.is-invalid{
 }
 .p-5{
 	padding: 1.25rem;
+}
+.px-\[20px\]{
+	padding-left: 20px;
+	padding-right: 20px;
 }
 .py-20{
 	padding-top: 5rem;
@@ -4657,6 +4682,15 @@ span.tag {
 
 .post-tags-container {
   margin-bottom: 10px;
+}
+
+.carousel-hidden {
+  display: none !important;
+}
+
+button.car-btn-right i {
+  font-size: 40px;
+  margin-left: -115px;
 }
 
 .hover\:border-gray-600:hover{
