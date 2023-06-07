@@ -29,7 +29,7 @@ window.addEventListener("load", async function () {
       $(".gm-navbar")
         .after(`<div class="relative overflow-hidden bg-no-repeat bg-cover mb-10" style="
       background-position: 50%;
-      background-image: url(/wordpress/wp-content/uploads/2022/11/Hero-Image-Banner-1-2.png);
+      background-image: url(/wp-content/uploads/2022/11/Hero-Image-Banner-1-2.png);
       height: 350px;
     ><div class=" absolute="" top-0="" right-0="" bottom-0="" left-0="" w-full="" h-full="" overflow-hidden="" bg-fixed"="">
       <div class="gm-container flex items-center h-full">
