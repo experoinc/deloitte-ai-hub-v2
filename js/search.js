@@ -8,7 +8,7 @@ export default async function searchPage(onPostClick, term, doInit = true) {
   const $tagsContainer = $("#tagsContainer");
 
   function getUrl(partial) {
-    return `${location.origin}/wordpress/${partial}`;
+    return `${location.origin}/${partial}`;
   }
 
   $([$sortBy, $pillars, $pillarTopics, $tagsContainer]).each(function () {
